@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Input from "../components/Input";
 import { Lock, Mail, User } from "lucide-react";
+import { Link } from "react-router-dom";
+import PasswordStrengthMeter from "../components/PasswordStrengthMeter";
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
@@ -45,6 +47,8 @@ const SignUpPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
+          <PasswordStrengthMeter password={password} />
+
           <motion.button
             className="mt-5 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white 
 						font-bold rounded-lg shadow-lg hover:from-green-600
@@ -57,6 +61,14 @@ const SignUpPage = () => {
             Sign Up
           </motion.button>
         </form>
+      </div>
+      <div className="px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center">
+        <p className="text-sm text-gray-400">
+          Already have an account?
+          <Link to={"/login"} className="text-green-400 hover:underline">
+            Login
+          </Link>
+        </p>
       </div>
     </motion.div>
   );
